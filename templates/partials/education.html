@@ -1,0 +1,101 @@
+<!-- Education & Experience Section -->
+<section id="experience" class="py-20 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Education & Experience</h2>
+            <div class="w-24 h-1 bg-primary mx-auto"></div>
+        </div>
+        
+        <div class="max-w-5xl mx-auto">
+            <!-- Education -->
+            <div class="mb-12" data-aos="fade-up">
+                <h3 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white flex items-center">
+                    <i class="fas fa-graduation-cap text-primary mr-3"></i>
+                    Education
+                </h3>
+                
+                <div class="space-y-6">
+                    {% for edu in education %}
+                    <div class="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-primary">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+                            <h4 class="text-xl font-bold text-gray-900 dark:text-white">{{ edu.degree }}</h4>
+                            <span class="text-sm text-gray-600 dark:text-gray-400 mt-1 md:mt-0">
+                                <i class="fas fa-calendar-alt mr-1"></i>
+                                {{ edu.start_date|date:"M Y" }} - {% if edu.is_current %}Present{% else %}{{ edu.end_date|date:"M Y" }}{% endif %}
+                            </span>
+                        </div>
+                        
+                        <p class="text-lg text-primary font-semibold mb-2">{{ edu.institution }}</p>
+                        <p class="text-gray-600 dark:text-gray-400 mb-2">{{ edu.field_of_study }}</p>
+                        
+                        {% if edu.grade %}
+                        <p class="text-sm text-gray-700 dark:text-gray-300">
+                            <i class="fas fa-award text-yellow-500 mr-1"></i>
+                            Grade: {{ edu.grade }}
+                        </p>
+                        {% endif %}
+                        
+                        {% if edu.description %}
+                        <p class="text-gray-600 dark:text-gray-400 mt-3">{{ edu.description }}</p>
+                        {% endif %}
+                    </div>
+                    {% empty %}
+                    <div class="text-center py-8 text-gray-600 dark:text-gray-400">
+                        <i class="fas fa-graduation-cap text-4xl mb-3"></i>
+                        <p>Education information coming soon!</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- Experience -->
+            <div data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white flex items-center">
+                    <i class="fas fa-briefcase text-primary mr-3"></i>
+                    Work Experience
+                </h3>
+                
+                <div class="space-y-6">
+                    {% for exp in experience %}
+                    <div class="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-secondary">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+                            <h4 class="text-xl font-bold text-gray-900 dark:text-white">{{ exp.position }}</h4>
+                            <span class="text-sm text-gray-600 dark:text-gray-400 mt-1 md:mt-0">
+                                <i class="fas fa-calendar-alt mr-1"></i>
+                                {{ exp.start_date|date:"M Y" }} - {% if exp.is_current %}Present{% else %}{{ exp.end_date|date:"M Y" }}{% endif %}
+                            </span>
+                        </div>
+                        
+                        <p class="text-lg text-secondary font-semibold mb-2">{{ exp.company }}</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                            <i class="fas fa-map-marker-alt mr-1"></i>
+                            {{ exp.location }}
+                        </p>
+                        
+                        <p class="text-gray-700 dark:text-gray-300 mb-4">{{ exp.description }}</p>
+                        
+                        {% if exp.get_achievements_list %}
+                        <div class="mt-4">
+                            <p class="font-semibold text-gray-900 dark:text-white mb-2">Key Achievements:</p>
+                            <ul class="space-y-2">
+                                {% for achievement in exp.get_achievements_list %}
+                                <li class="flex items-start text-gray-700 dark:text-gray-300">
+                                    <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                    <span>{{ achievement }}</span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% empty %}
+                    <div class="text-center py-8 text-gray-600 dark:text-gray-400">
+                        <i class="fas fa-briefcase text-4xl mb-3"></i>
+                        <p>Experience information coming soon!</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

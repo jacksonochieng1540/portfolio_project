@@ -1,0 +1,123 @@
+<!-- Contact Section -->
+<section id="contact" class="py-20 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h2>
+            <div class="w-24 h-1 bg-primary mx-auto mb-4"></div>
+            <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Have a project in mind or want to collaborate? Feel free to reach out!
+            </p>
+        </div>
+        
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div data-aos="fade-right">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Contact Information</h3>
+                    
+                    <div class="space-y-6">
+                        {% if about.email %}
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900 dark:text-white mb-1">Email</p>
+                                <a href="mailto:{{ about.email }}" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+                                    {{ about.email }}
+                                </a>
+                            </div>
+                        </div>
+                        {% endif %}
+                        
+                        {% if about.location %}
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900 dark:text-white mb-1">Location</p>
+                                <p class="text-gray-600 dark:text-gray-400">{{ about.location }}</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                        
+                        {% if about.whatsapp %}
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fab fa-whatsapp text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900 dark:text-white mb-1">WhatsApp</p>
+                                <a href="https://wa.me/{{ about.whatsapp }}" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+                                    {{ about.whatsapp }}
+                                </a>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="mt-8">
+                        <p class="font-semibold text-gray-900 dark:text-white mb-4">Connect with me:</p>
+                        <div class="flex gap-4">
+                            {% if about.github_url %}
+                            <a href="{{ about.github_url }}" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-900 hover:text-white transition-all duration-300">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            {% endif %}
+                            {% if about.linkedin_url %}
+                            <a href="{{ about.linkedin_url }}" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-blue-600 hover:text-white transition-all duration-300">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div data-aos="fade-left">
+                    <form id="contactForm" method="post" action="{% url 'contact_submit' %}" class="space-y-6">
+                        {% csrf_token %}
+                        
+                        <div>
+                            <label for="id_name" class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                                Name *
+                            </label>
+                            {{ contact_form.name }}
+                        </div>
+                        
+                        <div>
+                            <label for="id_email" class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                                Email *
+                            </label>
+                            {{ contact_form.email }}
+                        </div>
+                        
+                        <div>
+                            <label for="id_subject" class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                                Subject
+                            </label>
+                            {{ contact_form.subject }}
+                        </div>
+                        
+                        <div>
+                            <label for="id_message" class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                                Message *
+                            </label>
+                            {{ contact_form.message }}
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary text-white px-6 py-4 rounded-lg hover:bg-blue-600 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Send Message
+                        </button>
+                    </form>
+                    
+                    <!-- Success/Error Messages -->
+                    <div id="formMessage" class="mt-4 hidden"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

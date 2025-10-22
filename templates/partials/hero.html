@@ -1,0 +1,89 @@
+<!-- Hero Section -->
+<section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 pt-20">
+    <div class="container mx-auto px-4 py-20">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+            <!-- Text Content -->
+            <div class="flex-1 text-center md:text-left" data-aos="fade-right">
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
+                    Hi, I'm 
+                    <span class="text-primary">{{ about.name|default:"Jackson Ochieng" }}</span>
+                </h1>
+                
+                <div class="text-2xl md:text-3xl text-gray-700 dark:text-gray-300 mb-6">
+                    <span id="typed-text"></span>
+                    <span class="typed-cursor">|</span>
+                </div>
+                
+                <p class="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl">
+                    {{ about.tagline|default:"Turning real-world problems into scalable digital solutions." }}
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#projects" class="bg-primary text-white px-8 py-4 rounded-lg hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        <i class="fas fa-briefcase mr-2"></i>
+                        View Projects
+                    </a>
+                    {% if about.cv_file %}
+                    <a href="{{ about.cv_file.url }}" download class="bg-white dark:bg-gray-800 text-primary border-2 border-primary px-8 py-4 rounded-lg hover:bg-primary hover:text-white transition-all duration-300 shadow-lg">
+                        <i class="fas fa-download mr-2"></i>
+                        Download CV
+                    </a>
+                    {% endif %}
+                </div>
+                
+                <!-- Social Links -->
+                <div class="flex gap-4 mt-8 justify-center md:justify-start">
+                    {% if about.github_url %}
+                    <a href="{{ about.github_url }}" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-110">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    {% endif %}
+                    {% if about.linkedin_url %}
+                    <a href="{{ about.linkedin_url }}" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:scale-110">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    {% endif %}
+                    {% if about.email %}
+                    <a href="mailto:{{ about.email }}" class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-red-600 hover:text-white transition-all duration-300 transform hover:scale-110">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                    {% endif %}
+                    {% if about.whatsapp %}
+                    <a href="https://wa.me/{{ about.whatsapp }}" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-green-600 hover:text-white transition-all duration-300 transform hover:scale-110">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Profile Image -->
+            <div class="flex-1 flex justify-center" data-aos="fade-left">
+                <div class="relative">
+                    <div class="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-primary to-secondary p-2 animate-pulse-slow">
+                        {% if about.profile_image %}
+                        <img src="{{ about.profile_image.url }}" alt="{{ about.name }}" class="w-full h-full rounded-full object-cover border-4 border-white dark:border-gray-900">
+                        {% else %}
+                        <div class="w-full h-full rounded-full bg-gray-300 dark:bg-gray-700 flex items-center justify-center">
+                            <i class="fas fa-user text-8xl text-gray-500"></i>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <!-- Floating Elements -->
+                    <div class="absolute -top-4 -right-4 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-xl animate-float">
+                        <i class="fas fa-code text-3xl text-primary"></i>
+                    </div>
+                    <div class="absolute -bottom-4 -left-4 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-xl animate-float-delayed">
+                        <i class="fas fa-rocket text-3xl text-secondary"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scroll Down Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <a href="#about" class="text-gray-600 dark:text-gray-400">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </a>
+    </div>
+</section>
