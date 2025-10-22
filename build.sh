@@ -1,17 +1,14 @@
 #!/usr/bin/env bash
+# exit on error
+set -o errexit
 
-# Exit immediately if a command exits with a non-zero status.
-set -e
-
-
-
-# Install Python dependencies from requirements.txt
 pip install -r requirements.txt
 
-
-# Apply database migrations
+python manage.py collectstatic --noinput
 python manage.py migrate
 
-# Collect static files
-python manage.py collectstatic --noinput
+# Create superuser if it doesn't exist
+echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(username='admin').exists() or User.objects.create_superuser('admin', 'admin@example.com', 'changeme123')" | python manage.py shell
 
+# Populate initial data
+python manage.py populate_data
