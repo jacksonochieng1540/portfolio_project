@@ -1,0 +1,97 @@
+<!-- About Section -->
+<section id="about" class="py-20 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">About Me</h2>
+            <div class="w-24 h-1 bg-primary mx-auto"></div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 md:p-12 shadow-xl" data-aos="fade-up" data-aos-delay="100">
+                <div class="prose prose-lg dark:prose-invert max-w-none">
+                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-lg mb-6">
+                        {{ about.bio|default:"I'm a Telecommunication Engineer from JKUAT specializing in backend development using Django and REST APIs. I build reliable systems and deploy them using Docker, Nginx, and Render." }}
+                    </p>
+                </div>
+                
+                <!-- Quick Info Grid -->
+                <div class="grid md:grid-cols-2 gap-6 mt-8">
+                    <div class="flex items-center space-x-4 bg-white dark:bg-gray-900 p-4 rounded-lg">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-briefcase text-primary text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Role</p>
+                            <p class="font-semibold text-gray-900 dark:text-white">{{ about.profession|default:"Backend Developer" }}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4 bg-white dark:bg-gray-900 p-4 rounded-lg">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Location</p>
+                            <p class="font-semibold text-gray-900 dark:text-white">{{ about.location|default:"Juja, Kenya" }}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4 bg-white dark:bg-gray-900 p-4 rounded-lg">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-envelope text-primary text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Email</p>
+                            <p class="font-semibold text-gray-900 dark:text-white break-all">{{ about.email|default:"jack@example.com" }}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4 bg-white dark:bg-gray-900 p-4 rounded-lg">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-primary text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Education</p>
+                            <p class="font-semibold text-gray-900 dark:text-white">BSc. Telecom Engineering</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Interests/Skills Highlights -->
+                <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Key Interests</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">Backend Development</span>
+                        <span class="px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-medium">Django REST APIs</span>
+                        <span class="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">Docker & Deployment</span>
+                        <span class="px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full text-sm font-medium">Fiber Optics</span>
+                        <span class="px-4 py-2 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-full text-sm font-medium">Problem Solving</span>
+                    </div>
+                </div>
+                
+                <!-- Soft Skills -->
+                <div class="mt-6">
+                    <h3 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">Soft Skills</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="text-center p-3 bg-white dark:bg-gray-900 rounded-lg">
+                            <i class="fas fa-users text-2xl text-primary mb-2"></i>
+                            <p class="text-sm font-medium">Teamwork</p>
+                        </div>
+                        <div class="text-center p-3 bg-white dark:bg-gray-900 rounded-lg">
+                            <i class="fas fa-user-tie text-2xl text-primary mb-2"></i>
+                            <p class="text-sm font-medium">Leadership</p>
+                        </div>
+                        <div class="text-center p-3 bg-white dark:bg-gray-900 rounded-lg">
+                            <i class="fas fa-comments text-2xl text-primary mb-2"></i>
+                            <p class="text-sm font-medium">Communication</p>
+                        </div>
+                        <div class="text-center p-3 bg-white dark:bg-gray-900 rounded-lg">
+                            <i class="fas fa-lightbulb text-2xl text-primary mb-2"></i>
+                            <p class="text-sm font-medium">Problem Solving</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

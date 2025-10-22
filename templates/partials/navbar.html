@@ -1,0 +1,48 @@
+<!-- Navigation Bar -->
+<nav class="fixed top-0 left-0 right-0 bg-white dark:bg-gray-900 shadow-md z-50 transition-all duration-300" id="navbar">
+    <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#home" class="text-2xl font-bold text-primary">
+                <span class="text-gray-900 dark:text-white">Jack</span>Ayaga
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Home</a>
+                <a href="#about" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">About</a>
+                <a href="#projects" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Projects</a>
+                <a href="#skills" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Skills</a>
+                <a href="#experience" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Experience</a>
+                <a href="#contact" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Contact</a>
+                
+                <!-- Dark Mode Toggle -->
+                <button id="themeToggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center space-x-4">
+                <button id="themeToggleMobile" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-800">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
+                </button>
+                <button id="mobileMenuBtn" class="text-gray-700 dark:text-gray-300 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 space-y-3">
+            <a href="#home" class="block text-gray-700 dark:text-gray-300 hover:text-primary transition-colors py-2">Home</a>
+            <a href="#about" class="block text-gray-700 dark:text-gray-300 hover:text-primary transition-colors py-2">About</a>
+            <a href="#projects" class="block text-gray-700 dark:text-gray-300 hover:text-primary transition-colors py-2">Projects</a>
+            <a href="#skills" class="block text-gray-700 dark:text-gray-300 hover:text-primary transition-colors py-2">Skills</a>
+            <a href="#experience" class="block text-gray-700 dark:text-gray-300 hover:text-primary transition-colors py-2">Experience</a>
+            <a href="#contact" class="block text-gray-700 dark:text-gray-300 hover:text-primary transition-colors py-2">Contact</a>
+        </div>
+    </div>
+</nav>

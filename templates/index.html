@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Jackson Ayagah - Software Engineer & Backend Developer{% endblock %}
+
+{% block content %}
+
+<!-- Include all sections -->
+{% include 'partials/hero.html' %}
+{% include 'partials/about.html' %}
+{% include 'partials/projects.html' %}
+{% include 'partials/skills.html' %}
+{% include 'partials/education.html' %}
+{% include 'partials/testimonials.html' %}
+{% include 'partials/contact.html' %}
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Typing effect for hero section
+    const roles = [
+        "Software Engineer",
+        "Backend Developer",
+        "Django Enthusiast",
+        "API Architect",
+        "Problem Solver"
+    ];
+    
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typedTextElement = document.getElementById('typed-text');
+    
+    function typeRole() {
+        const currentRole = roles[roleIndex];
+        
+        if (isDeleting) {
+            typedTextElement.textContent = currentRole.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            typedTextElement.textContent = currentRole.substring(0, charIndex + 1);
+            charIndex++;
+        }
+        
+        let typeSpeed = isDeleting ? 50 : 100;
+        
+        if (!isDeleting && charIndex === currentRole.length) {
+            typeSpeed = 2000;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            typeSpeed = 500;
+        }
+        
+        setTimeout(typeRole, typeSpeed);
+    }
+    
+    // Start typing effect when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(typeRole, 1000);
+    });
+</script>
+{% endblock %}

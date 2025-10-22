@@ -1,0 +1,104 @@
+<!-- Projects Section -->
+<section id="projects" class="py-20 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Featured Projects</h2>
+            <div class="w-24 h-1 bg-primary mx-auto mb-4"></div>
+            <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Here are some of my recent projects showcasing my skills in backend development, API design, and full-stack applications.
+            </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for project in projects %}
+            <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:100 }}">
+                <!-- Project Image -->
+                <div class="relative h-48 overflow-hidden bg-gray-200 dark:bg-gray-700">
+                    {% if project.image %}
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    {% else %}
+                    <div class="w-full h-full flex items-center justify-center">
+                        <i class="fas fa-project-diagram text-6xl text-gray-400"></i>
+                    </div>
+                    {% endif %}
+                    {% if project.is_featured %}
+                    <span class="absolute top-4 right-4 bg-yellow-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                        <i class="fas fa-star"></i> Featured
+                    </span>
+                    {% endif %}
+                </div>
+                
+                <!-- Project Content -->
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">{{ project.title }}</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">{{ project.description }}</p>
+                    
+                    <!-- Tech Stack -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        {% for tech in project.get_tech_list %}
+                        <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-xs font-medium">
+                            {{ tech }}
+                        </span>
+                        {% endfor %}
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="flex gap-3">
+                        {% if project.github_link %}
+                        <a href="{{ project.github_link }}" target="_blank" class="flex-1 text-center bg-gray-800 dark:bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition-colors">
+                            <i class="fab fa-github mr-2"></i>Code
+                        </a>
+                        {% endif %}
+                        {% if project.demo_link %}
+                        <a href="{{ project.demo_link }}" target="_blank" class="flex-1 text-center bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                            <i class="fas fa-external-link-alt mr-2"></i>Demo
+                        </a>
+                        {% endif %}
+                        <button onclick="openProjectModal({{ project.id }})" class="flex-1 text-center bg-secondary text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors">
+                            <i class="fas fa-info-circle mr-2"></i>Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-span-full text-center py-12">
+                <i class="fas fa-folder-open text-6xl text-gray-400 mb-4"></i>
+                <p class="text-gray-600 dark:text-gray-400">No projects available yet. Check back soon!</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Project Modal -->
+<div id="projectModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
+    <div class="bg-white dark:bg-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+        <div class="p-6 md:p-8">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-start mb-6">
+                <h2 id="modalTitle" class="text-3xl font-bold text-gray-900 dark:text-white"></h2>
+                <button onclick="closeProjectModal()" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Image -->
+            <div id="modalImageContainer" class="mb-6 rounded-xl overflow-hidden"></div>
+            
+            <!-- Modal Description -->
+            <div class="mb-6">
+                <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Project Overview</h3>
+                <p id="modalDescription" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+            </div>
+            
+            <!-- Tech Stack -->
+            <div class="mb-6">
+                <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">Technologies Used</h3>
+                <div id="modalTechStack" class="flex flex-wrap gap-2"></div>
+            </div>
+            
+            <!-- Links -->
+            <div id="modalLinks" class="flex gap-4"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<!-- Footer -->
+<footer class="bg-gray-900 dark:bg-black text-white py-12">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-8 mb-8">
+            <!-- About -->
+            <div>
+                <h3 class="text-2xl font-bold mb-4 text-primary">JackAyaga</h3>
+                <p class="text-gray-400 mb-4">
+                    Software Engineer passionate about building scalable backend solutions with Django and modern web technologies.
+                </p>
+                <div class="flex gap-3">
+                    {% if about.github_url %}
+                    <a href="{{ about.github_url }}" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg bg-gray-800 hover:bg-primary transition-colors">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    {% endif %}
+                    {% if about.linkedin_url %}
+                    <a href="{{ about.linkedin_url }}" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-lg bg-gray-800 hover:bg-blue-600 transition-colors">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    {% endif %}
+                    {% if about.email %}
+                    <a href="mailto:{{ about.email }}" class="w-10 h-10 flex items-center justify-center rounded-lg bg-gray-800 hover:bg-red-600 transition-colors">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div>
+                <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="#home" class="text-gray-400 hover:text-primary transition-colors">Home</a></li>
+                    <li><a href="#about" class="text-gray-400 hover:text-primary transition-colors">About</a></li>
+                    <li><a href="#projects" class="text-gray-400 hover:text-primary transition-colors">Projects</a></li>
+                    <li><a href="#skills" class="text-gray-400 hover:text-primary transition-colors">Skills</a></li>
+                    <li><a href="#contact" class="text-gray-400 hover:text-primary transition-colors">Contact</a></li>
+                </ul>
+            </div>
+            
+            <!-- Contact Info -->
+            <div>
+                <h4 class="text-lg font-bold mb-4">Contact Info</h4>
+                <ul class="space-y-3 text-gray-400">
+                    {% if about.location %}
+                    <li class="flex items-center">
+                        <i class="fas fa-map-marker-alt text-primary mr-3"></i>
+                        {{ about.location }}
+                    </li>
+                    {% endif %}
+                    {% if about.email %}
+                    <li class="flex items-center">
+                        <i class="fas fa-envelope text-primary mr-3"></i>
+                        <a href="mailto:{{ about.email }}" class="hover:text-primary transition-colors">
+                            {{ about.email }}
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Bottom Bar -->
+        <div class="border-t border-gray-800 pt-8 text-center">
+            <p class="text-gray-400">
+                &copy; {% now "Y" %} <span class="text-primary font-semibold">Jackson Ochieng Ayagah</span>. All rights reserved.
+            </p>
+            <p class="text-gray-500 text-sm mt-2">
+                Built with <i class="fas fa-heart text-red-500"></i> using Django & Tailwind CSS
+            </p>
+        </div>
+    </div>
+</footer>
