@@ -1,31 +1,30 @@
 FROM python:3.11-slim
 
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
-ENV PORT=10000
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
+# Set work directory
 WORKDIR /app
 
-# Install only necessary dependencies (no nginx)
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
-    gcc \
+    build-essential \
+    libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
+# Install Python dependencies
 COPY requirements.txt .
-RUN pip install --upgrade pip && pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
+# Copy project
 COPY . .
-
-# Create directories
-RUN mkdir -p staticfiles media/projects
 
 # Collect static files
 RUN python manage.py collectstatic --noinput
 
-# Run migrations
-RUN python manage.py migrate --noinput
-
+# Expose the port
 EXPOSE 10000
 
-# Simple gunicorn command to run the app
-CMD gunicorn portfolio_project.wsgi:application --bind 0.0.0.0:$PORT
+# Run the application
+CMD ["gunicorn", "your_project_name.wsgi", "--bind", "0.0.0.0:10000"]
