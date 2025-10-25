@@ -1,32 +1,35 @@
 FROM python:3.11-slim
 
-# Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 ENV PORT=10000
 
-# Set work directory
 WORKDIR /app
 
-# Install system dependencies
+# Install nginx
 RUN apt-get update && apt-get install -y \
     gcc \
-    postgresql-client \
+    nginx \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python dependencies
-COPY requirements.txt /app/
+COPY requirements.txt .
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
-# Copy project
-COPY . /app/
+COPY . .
+
+# Copy the FIXED nginx config
+COPY nginx.conf /etc/nginx/sites-available/default
+
+# Create directories
+RUN mkdir -p staticfiles media/projects
 
 # Collect static files
 RUN python manage.py collectstatic --noinput
 
 # Run migrations
-RUN python manage.py migrate
+RUN python manage.py migrate --noinput
 
 EXPOSE 10000
 
-CMD ["gunicorn", "portfolio_project.wsgi:application", "--bind", "0.0.0.0:10000"]
+# Start nginx and gunicorn
+CMD service nginx start && gunicorn portfolio_project.wsgi:application --bind 127.0.0.1:8000
