@@ -18,7 +18,7 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 COPY . .
 
 # Copy the FIXED nginx config
-COPY nginx.conf /etc/nginx/sites-available/default
+COPY Nginx/nginx.conf /etc/nginx/sites-available/default
 
 # Create directories
 RUN mkdir -p staticfiles media/projects
