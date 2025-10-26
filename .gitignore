@@ -14,11 +14,7 @@ env/
 # Django stuff
 *.log
 db.sqlite3
-media/
-staticfiles/
-static/
 
 # VSCode / IDE
 .vscode/
 .idea/
-
