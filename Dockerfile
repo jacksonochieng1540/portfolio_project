@@ -27,4 +27,4 @@ RUN python manage.py collectstatic --noinput
 EXPOSE 10000
 
 # Run the application
-CMD ["gunicorn", "portfolio_project_name.wsgi", "--bind", "0.0.0.0:10000"]
+CMD ["gunicorn", "portfolio_project.wsgi", "--bind", "0.0.0.0:10000"]
