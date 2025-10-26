@@ -16,6 +16,9 @@ import environ
 import dj_database_url
 from dotenv import load_dotenv
 from decouple import config
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 env = environ.Env(DEBUG=(bool, False))
 
@@ -39,15 +42,17 @@ ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1'])
 # Application definition
 
 INSTALLED_APPS = [
+    'cloudinary_storage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'portfolio',
-    'cloudinary_storage',
     'cloudinary',
+    'portfolio',
+    
+    
 ]
 
 MIDDLEWARE = [
@@ -132,9 +137,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 
-# Media files
+# Media files 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 
