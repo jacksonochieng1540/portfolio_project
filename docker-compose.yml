@@ -2,13 +2,13 @@ version: '3.8'
 
 services:
   db:
-    image: postgres:15
+    image: postgres:15    
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=portfolio_db
       - POSTGRES_USER=portfolio_user
-      - POSTGRES_PASSWORD=portfolio_pass
+      - POSTGRES_PASSWORD=portfolio_pass   
     ports:
       - "5432:5432"
 
