@@ -1,7 +1,7 @@
 databases:
   - name: portfolio_db
     databaseName: portfolio_db
-    user: portfolio_user
+    user: portfolio_user  
 
 services:
   - type: web
